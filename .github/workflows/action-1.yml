@@ -1,13 +1,13 @@
 name: Workflow nil-richert.fr
 on: push
-  jobs:
-    unittest:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get code
-          uses: actions/checkout@v4
-        - name: Run vitest
-          run: npm run test
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Run vitest
+        run: npm run test
 
 # # Controls when the workflow will run
 # on:
