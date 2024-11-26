@@ -1,5 +1,7 @@
+@use 'colors';
+
 body {
-  color: $primaryColor;
+  color: colors.$primaryColor;
   font-family: "swiss_721roman";
   text-align: center;
 }

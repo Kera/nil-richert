@@ -1,8 +1,7 @@
 // COMMONS
-@import '_colors';
-@import '_fonts';
-@import '_globals';
-@import '_commons';
+@use 'fonts';
+@use 'globals';
+@use 'commons';
 
 //COMPONENTS
-@import '../../components/organims/HomeLogo/HomeLogo';
+@use '../../components/organims/HomeLogo/HomeLogo';
