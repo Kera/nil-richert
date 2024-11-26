@@ -6,8 +6,8 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Install vitest
-        run: npm i vitest
+      - name: Install node packages
+        run: npm ci
       - name: Run vitest
         run: npm run test
 
