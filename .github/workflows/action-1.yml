@@ -10,6 +10,17 @@ jobs:
         run: npm ci
       - name: Run vitest
         run: npm run test
+    build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install node packages
+        run: npm ci
+      - name: Build app
+        uses: npm run build
+      - name: Deploy
+        run: echo "TO DO"
 
 # # Controls when the workflow will run
 # on:
