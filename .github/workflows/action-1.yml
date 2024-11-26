@@ -12,6 +12,7 @@ jobs:
         run: npm run test
     build-and-deploy:
     runs-on: ubuntu-latest
+  build-and-deploy:
     steps:
       - name: Get code
         uses: actions/checkout@v4
