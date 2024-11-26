@@ -1,9 +1,7 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Workflow nil-richert.fr
 on : push
   jobs:
-    unit-test:
+    unittest:
       runs-on: ubuntu-latest
       steps:
         - name: Get code
