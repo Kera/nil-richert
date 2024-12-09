@@ -1,7 +1,7 @@
 name: Infos context
 on: workflow_dispatch
 jobs:
-  infos:
+  info:
     runs-on: ubuntu-latest
     steps:
       - name: Github context
