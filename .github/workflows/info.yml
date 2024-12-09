@@ -1,4 +1,4 @@
-name: Infos
+name: Info
 on: workflow_dispatch
 jobs:
   info:
