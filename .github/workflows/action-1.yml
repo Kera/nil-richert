@@ -1,5 +1,5 @@
 name: Workflow nil-richert.fr
-on: push
+on: [push, workflow_dispatch]
 jobs:
   unit-test:
     runs-on: ubuntu-latest
