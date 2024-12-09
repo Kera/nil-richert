@@ -1,15 +1,27 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Workflow nil-richert.fr
-on : push
-  jobs:
-    unit-test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get code
-          uses: actions/checkout@v4
-        - name: Run vitest
-          run: npm run test
+on: [push, workflow_dispatch]
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install node packages
+        run: npm ci
+      - name: Run vitest
+        run: npm run test
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    needs: unit-test
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install node packages
+        run: npm ci
+      - name: Build app
+        run: npm run build
+      - name: Deploy
+        run: echo "TO DO"
 
 # # Controls when the workflow will run
 # on:
