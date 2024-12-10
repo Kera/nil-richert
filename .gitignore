@@ -1,7 +1,7 @@
 ## NUXT IGNORE
 
 # Nuxt dev/build outputs
-.output
+#.output
 .data
 .nuxt
 .nitro
