@@ -41,7 +41,7 @@ jobs:
         run: ls
       - name: Publish commit id
         id: commit-id
-        run: echo "commitId=${{ toJSON(github.event.head_commit.id) }}" >> "$GITHUB_OUTPUT"
+        run: echo "commit-id=${{ toJSON(github.event.head_commit.id) }}" >> "$GITHUB_OUTPUT"
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
@@ -52,6 +52,5 @@ jobs:
     needs: build-upload
     steps:
       - env:
-          OUTPUT1: ${{needs.build-upload.outputs.commitId}}
-          commitId: ${{needs.build-upload.outputs.commitId}}
+          OUTPUT1: ${{needs.build-upload.outputs.commit-id}}
         run: echo ${{OUTPUT1}}
