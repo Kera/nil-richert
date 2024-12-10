@@ -1,4 +1,4 @@
-name: Issues
+name: Deploy dev
 on: 
   push:
     branches:
