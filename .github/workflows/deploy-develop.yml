@@ -51,6 +51,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-upload
     steps:
-      - env:
-          OUTPUT1: ${{needs.build-upload.outputs.commit-id}}
-        run: echo ${{OUTPUT1}}
+    run: echo "${{needs.build-upload.outputs.commit-id}}""
+
+       
