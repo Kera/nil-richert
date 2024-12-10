@@ -1,12 +1,15 @@
 ## NUXT IGNORE
 
 # Nuxt dev/build outputs
-#.output
+.output
 .data
 .nuxt
 .nitro
 .cache
 dist
+
+#custom nuxt export
+output
 
 # Node dependencies
 node_modules
