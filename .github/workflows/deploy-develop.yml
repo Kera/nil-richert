@@ -52,6 +52,6 @@ jobs:
     needs: build-upload
     steps:
       - name: Upload dist
-      run: echo "${{needs.build-upload.outputs.commit-id}}""
+        run: echo "${{needs.build-upload.outputs.commit-id}}""
 
        
