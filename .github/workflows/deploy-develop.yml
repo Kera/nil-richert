@@ -53,4 +53,4 @@ jobs:
     steps:
       - env:
           commitId: ${{needs.job1.outputs.output1}}
-        run: echo "$commitId "
+        run: echo "${{commitId}}"
