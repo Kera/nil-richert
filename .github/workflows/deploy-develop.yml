@@ -42,5 +42,5 @@ jobs:
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
-          name: nil-richert-fr-build-${{ toJSON(github.event.head_commit.timestamp) }}-${{ toJSON(github.event.head_commit.id) }}
+          name: nil-richert-fr-build-${{ github.event.head_commit.timestamp }}-${{ github.event.head_commit.id }}
           path: output
