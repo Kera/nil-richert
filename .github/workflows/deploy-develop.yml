@@ -52,4 +52,4 @@ jobs:
     needs: build-upload
     steps:
       - name: Echo commitId
-        run: echo ${{needs.build-upload-outputs.commitId
+        run: echo ${{needs.build-upload-outputs.commitId}}
