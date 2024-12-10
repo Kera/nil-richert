@@ -54,4 +54,4 @@ jobs:
       - env:
           OUTPUT1: ${{needs.build-upload.outputs.commitId}}
           commitId: ${{needs.build-upload.outputs.commitId}}
-        run: echo "$OUTPUT1"
+        run: echo ${{OUTPUT1}}
