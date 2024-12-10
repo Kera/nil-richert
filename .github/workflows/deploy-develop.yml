@@ -38,7 +38,7 @@ jobs:
       - name: List files build
         run: ls
       - name: Echo event
-        run: echo ${{ toJSON(github.event) }}
+        run: echo "${{ toJSON(github.event) }}"
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
