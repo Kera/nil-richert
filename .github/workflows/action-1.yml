@@ -12,7 +12,7 @@ jobs:
         run: npm run lint
   unit-test:
     runs-on: ubuntu-latest
-    needs: es-lint
+    needs: lint
     steps:
       - name: Get code
         uses: actions/checkout@v4
