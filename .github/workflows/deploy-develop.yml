@@ -1,10 +1,9 @@
 name: Deploy dev
-run-name: Deploy dev
-on: 
+on:
+  workflow_dispatch:
   push:
     branches:
       - develop
-  workflow_dispatch:
 jobs:
   eslint:
     runs-on: ubuntu-latest
