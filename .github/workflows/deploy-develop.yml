@@ -52,6 +52,6 @@ jobs:
     needs: build-upload
     steps:
       - env:
-          OUTPUT1: ${{needs.job1.outputs.commitId}}
-          commitId: ${{needs.job1.outputs.commitId}}
+          OUTPUT1: ${{needs.build-upload.outputs.commitId}}
+          commitId: ${{needs.build-upload.outputs.commitId}}
         run: echo "$OUTPUT1"
