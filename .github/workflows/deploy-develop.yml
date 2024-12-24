@@ -54,6 +54,6 @@ jobs:
     needs: build-upload
     steps:
       - name: Display commit Id
-        run: echo commit id"${{needs.build-upload.outputs.commit-id}}""
+        run: echo "${{needs.build-upload.outputs.commit-id}}"
 
        
