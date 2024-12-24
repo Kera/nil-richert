@@ -41,8 +41,10 @@ jobs:
         run: ls
       - name: Print infos
         run: echo "${{ toJSON(github.event) }}"
-      - name: Upload dist
       - name: Publish commit id
+        id: commit-id
+        run: echo "commit-id=${{ toJSON(github.event.head_commit.id) }}" >> "$GITHUB_OUTPUT"
+      - name: Upload dist
         id: commit-id
         run: echo "commit-id=${{ toJSON(github.event.head_commit.id) }}" >> "$GITHUB_OUTPUT"
       - name: Upload dist
