@@ -45,7 +45,7 @@ jobs:
       - name: Print infos
         run: echo "${{ toJSON(github.event) }}"
       - name: Publish commit id
-        id: publish commit-id
+        id: publish-commit-id
         run: echo publishing var
       - name: Upload dist
         uses: actions/upload-artifact@v4
