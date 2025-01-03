@@ -44,11 +44,15 @@ jobs:
       - name: Print infos
         run: echo "${{ toJSON(github.event) }}"
       - name: Publish commit id
-        id: commit-id
+        id: publish commit-id
 #        run: echo "commit-id=$toJSON(github.event.head_commit.id)" >> "$GITHUB_OUTPUT"
 #        run: echo "::set-output name=my_output::my_value"
-        run: echo outputContent=nilvalue >> $env:GITHUB_OUTPUT
+#        run: echo outputContent=nilvalue >> $env:GITHUB_OUTPUT
+        outputs:
+          nilValue: ${{ steps.step1.outputs.test }}
       - name: Display commit Id 1
+        outputs:
+          nilValue: ${{ steps.step1.outputs.test }}
         run: echo "current env - ${{ steps.commit-id.outputs.outputContent }}"
       - name: Upload dist
         uses: actions/upload-artifact@v4
@@ -60,6 +64,6 @@ jobs:
     needs: build-upload
     steps:
       - name: Display commit Id
-        run: echo "current env - ${{ steps.commit-id.outputs.outputContent }}"
+        run: echo "outputs - ${{ needs.commit-id.outputs.nilValue }}"
 
        
