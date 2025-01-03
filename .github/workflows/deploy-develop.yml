@@ -43,7 +43,7 @@ jobs:
         run: echo "${{ toJSON(github.event) }}"
       - name: Publish commit id
         id: commit-id
-        run: echo "commit-id=${{ toJSON(github.event.head_commit.id) }}" >> "$GITHUB_OUTPUT"
+        run: echo "commit-id=$toJSON(github.event.head_commit.id)" >> "$GITHUB_OUTPUT"
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
