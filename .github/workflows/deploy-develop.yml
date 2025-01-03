@@ -1,4 +1,6 @@
 name: Deploy dev
+env:
+  CURRENT_ENV: develop 
 on:
   workflow_dispatch:
   push:
@@ -43,7 +45,8 @@ jobs:
         run: echo "${{ toJSON(github.event) }}"
       - name: Publish commit id
         id: commit-id
-        run: echo "commit-id=$toJSON(github.event.head_commit.id)" >> "$GITHUB_OUTPUT"
+#        run: echo "commit-id=$toJSON(github.event.head_commit.id)" >> "$GITHUB_OUTPUT"
+        run: echo "::set-output name=my_output::my_value"
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
@@ -54,6 +57,6 @@ jobs:
     needs: build-upload
     steps:
       - name: Display commit Id
-        run: echo "${{needs.build-upload.outputs.commit-id}}"
+        run: echo "current env :: $CURRENT_ENV"
 
        
