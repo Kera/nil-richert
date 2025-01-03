@@ -57,6 +57,6 @@ jobs:
     needs: build-upload
     steps:
       - name: Display commit Id
-        run: echo "current env - $my_output"
+        run: echo "current env - ${{ steps.commit-id.outputs.my_output }}"
 
        
