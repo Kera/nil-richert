@@ -32,6 +32,7 @@ jobs:
     needs: unit-test
     outputs:
       commit-id: ${{steps.commit-id.outputs.commitId}}
+      nilValue: publishedVar
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -45,16 +46,7 @@ jobs:
         run: echo "${{ toJSON(github.event) }}"
       - name: Publish commit id
         id: publish commit-id
-#        run: echo "commit-id=$toJSON(github.event.head_commit.id)" >> "$GITHUB_OUTPUT"
-#        run: echo "::set-output name=my_output::my_value"
-#        run: echo outputContent=nilvalue >> $env:GITHUB_OUTPUT
         run: echo publishing var
-        outputs:
-          nilValue: publishedVar
-      # - name: Display commit Id 1
-      #   outputs:
-      #     nilValue: ${{ steps.step1.outputs.test }}
-      #   run: echo "current env - ${{ steps.commit-id.outputs.outputContent }}"
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
@@ -65,6 +57,6 @@ jobs:
     needs: build-upload
     steps:
       - name: Display commit Id
-        run: echo "outputs - ${{ needs.commit-id.outputs.nilValue }}"
+        run: echo "outputs - ${{ needs.build-upload.outputs.nilValue }}"
 
        
