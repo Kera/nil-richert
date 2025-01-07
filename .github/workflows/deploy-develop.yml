@@ -62,7 +62,7 @@ jobs:
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
-          name: nil-richert-fr-build-${{ CURRENT_ENV }}-${{ AWS_LOGIN }}
+          name: nil-richert-fr-build-${{ $CURRENT_ENV }}-${{ $AWS_LOGIN }}
           path: output
   echo-commit-id:
     runs-on: ubuntu-latest
