@@ -67,7 +67,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-upload
     steps:
-      - name: Display infodd
-        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }}"
+      - name: Display infos
+        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} /r/n \
+            repo - $GITHUB_ACTION_REPOSITORY | user - $GITHUB_ACTOR"
 
        
