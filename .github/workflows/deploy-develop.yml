@@ -62,14 +62,14 @@ jobs:
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
-          name: nil-richert-fr-build-$CURRENT_ENV-${{ needs.build-upload.outputs.commit-id }}
+          name: nil-richert-fr-build-$CURRENT_ENV-${{ $AWS_LOGIN }}
           path: output
   echo-commit-id:
     runs-on: ubuntu-latest
     needs: build-upload
     steps:
       - name: Display infos
-        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} /r/n \
-            AWS LOGIN - ${{ secrets.AWS_ACCOUNT_EMAIL }} / $AWS_ACCOUNT_EMAIL | user - $GITHUB_ACTOR"
+        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} \r\n \
+             user - $GITHUB_ACTOR"
 
        
