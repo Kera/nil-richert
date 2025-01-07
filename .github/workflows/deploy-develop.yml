@@ -1,6 +1,7 @@
 name: Deploy dev
 env:
   CURRENT_ENV: develop
+  AWS_LOGIN: ${{ AWS_ACCOUNT_EMAIL }}
 on:
   workflow_dispatch:
   push:
@@ -69,6 +70,6 @@ jobs:
     steps:
       - name: Display infos
         run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} /r/n \
-            repo - $GITHUB_ACTION_REPOSITORY | user - $GITHUB_ACTOR"
+            AWS LOGIN - ${{ secrets.AWS_ACCOUNT_EMAIL }} / $AWS_ACCOUNT_EMAIL | user - $GITHUB_ACTOR"
 
        
