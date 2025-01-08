@@ -62,14 +62,11 @@ jobs:
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
-          name: nil-richert-fr-build-${{ env.CURRENT_ENV }}-${{ needs.build-upload.outputs.commit-id }}
+          name: nil-richert-fr-build-${{ env.CURRENT_ENV }}-${{ github.event.head_commit.id }}
           path: output
   echo-commit-id:
     runs-on: ubuntu-latest
     needs: build-upload
     steps:
       - name: Display infos
-        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} \r\n \
-             user - $GITHUB_ACTOR"
-
-       
+        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} user - $GITHUB_ACTOR" \
