@@ -62,7 +62,7 @@ jobs:
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
-          name: nil-richert-fr-build-${{ $CURRENT_ENV }}-${{ needs.build-upload.outputs.commit-id }}
+          name: nil-richert-fr-build-${{ env.CURRENT_ENV }}-${{ needs.build-upload.outputs.commit-id }}
           path: output
   echo-commit-id:
     runs-on: ubuntu-latest
