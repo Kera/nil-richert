@@ -22,10 +22,13 @@ jobs:
       - name: Install node packages
         run: npm ci
       - name: Run eslint
+        id: run-eslint
         run: npm run lint
+      - name: Upload lint report
+        if: steps.run-eslint.outcome == 'failure'
+        run: ls
   unit-test:
     runs-on: ubuntu-latest
-    needs: eslint
     steps:
       - name: Get code
         uses: actions/checkout@v4
