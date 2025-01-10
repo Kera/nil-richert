@@ -81,5 +81,7 @@ jobs:
     if: ${{ always() || success() || cancelled() }}
     steps:
       - name: Always executed
-        run: echo "Job ended, listing files " && ls
+        run: |
+          echo "Job ended, listing files"
+          ls
   
