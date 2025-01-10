@@ -18,7 +18,7 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/node_modules
+          path: node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
@@ -35,7 +35,7 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/node_modules
+          path: node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
@@ -61,7 +61,7 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/node_modules
+          path: node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
@@ -92,7 +92,7 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/node_modules
+          path: node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
