@@ -76,6 +76,7 @@ jobs:
       - name: Display infos, list file
         run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} user - $GITHUB_ACTOR"
   report:
+    runs-on: ubuntu-latest
     steps:
       - name: Always executed
         run: echo "Job ended, listing files " && ls
