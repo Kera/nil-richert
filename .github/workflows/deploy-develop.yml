@@ -65,7 +65,7 @@ jobs:
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
-        run: echo ${{ steps.cache.outputs.cache-hit }} && npm ci
+        run: echo ${{ toJSON(steps.cache) }} && npm ci
       - name: Build app
         run: npm run build
       - name: Print infos
