@@ -77,6 +77,8 @@ jobs:
         run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} user - $GITHUB_ACTOR"
   report:
     runs-on: ubuntu-latest
+    needs: ['eslint', 'unit-tests', 'build-upload', 'echo-commit-id']
+    if: ${{ always() || success() || cancelled() }}
     steps:
       - name: Always executed
         run: echo "Job ended, listing files " && ls
