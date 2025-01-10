@@ -44,6 +44,10 @@ jobs:
         run: ls && npm run test
       - name: Upload unit test report
         if: ${{ failure() && steps.vitest.conclusion == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-report
+          path: vitest-report.json
         run: ls
   build-upload:
     runs-on: ubuntu-latest
