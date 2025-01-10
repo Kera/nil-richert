@@ -74,5 +74,9 @@ jobs:
     needs: build-upload
     steps:
       - name: Display infos, list file
-        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} user - $GITHUB_ACTOR" && ls
+        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} user - $GITHUB_ACTOR"
+  report:
+    steps:
+      - name: Always executed
+        run: echo "Job ended, listing files " && ls
   
