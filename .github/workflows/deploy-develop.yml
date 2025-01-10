@@ -21,7 +21,7 @@ jobs:
           path: ~/node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
-        if: steps.cache.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Run eslint
         id: run-eslint
@@ -38,8 +38,8 @@ jobs:
           path: ~/node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
-        if: steps.cache.cache-hit != 'true'
-        run: npm ci
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: echo ${{ steps.cache.cache-hit }} && npm ci
       - name: Run vitest
         id: vitest
         run: ls && npm run test
@@ -64,7 +64,7 @@ jobs:
           path: ~/node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
-        if: steps.cache.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build app
         run: npm run build
@@ -95,7 +95,7 @@ jobs:
           path: ~/node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
-        if: steps.cache.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Always executed
         run: echo "Job ended, listing files" && ls
