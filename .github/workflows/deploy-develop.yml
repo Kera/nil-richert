@@ -15,11 +15,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Cache dependencies
+        id: cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: ~/node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
+        if: steps.cache.cache-hit != 'true'
         run: npm ci
       - name: Run eslint
         id: run-eslint
@@ -30,11 +32,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Cache dependencies
+        id: cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: ~/node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
+        if: steps.cache.cache-hit != 'true'
         run: npm ci
       - name: Run vitest
         id: vitest
@@ -54,11 +58,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Cache dependencies
+        id: cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: ~/node_modules
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
+        if: steps.cache.cache-hit != 'true'
         run: npm ci
       - name: Build app
         run: npm run build
@@ -83,5 +89,6 @@ jobs:
       - name: Always executed
         run: |
           echo "Job ended, listing files"
+          touch test.txt
           ls
   
