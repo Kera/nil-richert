@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest --reporter=json --outputFile=./vitest-report.json",
-    "lint": "eslint ."
+    "lint": "eslint . --config eslint.config.mjs"
   },
   "dependencies": {
     "@nuxt/eslint": "^0.7.2",
