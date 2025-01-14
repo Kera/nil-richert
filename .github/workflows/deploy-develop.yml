@@ -9,4 +9,4 @@ on:
       - develop
 jobs:
   deploy:
-    uses: ./.github/workflow/deploy.yml
+    uses: ./.github/workflows/deploy.yml
