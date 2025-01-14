@@ -27,7 +27,10 @@ jobs:
         id: run-eslint
         run: npm run lint
   unit-tests:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-systems: [unbuntu-latest, windows-latest]
+    runs-on: ${{ matrix.operating-systems }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -65,7 +68,7 @@ jobs:
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
-        run: echo "${{ toJSON(steps.cache) }}" && npm ci
+        run: npm ci
       - name: Build app
         run: npm run build
       - name: Print infos
