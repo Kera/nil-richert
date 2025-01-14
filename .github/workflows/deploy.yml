@@ -19,6 +19,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build app
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm run build
       - name: Run eslint
         id: run-eslint
@@ -31,7 +32,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Cache dependencies
+      - name: Cache project
         id: cache
         uses: actions/cache@v3
         with:
@@ -42,6 +43,9 @@ jobs:
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Build app
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm run build
       - name: Run vitest
         id: vitest
         run: ls && npm run test
@@ -59,7 +63,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Cache dependencies
+      - name: Cache project
         id: cache
         uses: actions/cache@v3
         with:
@@ -71,6 +75,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build app
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm run build
       - name: Print infos
         run: echo "${{ toJSON(github.event) }}"
@@ -92,7 +97,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Cache dependencies
+      - name: Cache project
         id: cache
         uses: actions/cache@v3
         with:
@@ -103,6 +108,9 @@ jobs:
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Build app
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm run build
       - name: Always executed
         run: echo "Job ended, listing files" && ls
   
