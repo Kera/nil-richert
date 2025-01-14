@@ -25,7 +25,7 @@ jobs:
         run: npm ci
       - name: Run eslint
         id: run-eslint
-        run: npm run ls && npm run lint
+        run: ls && npm run lint
   unit-tests:
     strategy:
       matrix:
