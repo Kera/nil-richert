@@ -42,7 +42,7 @@ jobs:
           key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
-        run: echo ${{ steps.cache.outputs.cache-hit }} && npm ci
+        run: npm ci
       - name: Run vitest
         id: vitest
         run: ls && npm run test

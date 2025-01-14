@@ -15,7 +15,6 @@
     "@nuxt/eslint": "^0.7.2",
     "@nuxt/image": "^1.8.1",
     "nuxt": "^3.14.1592",
-    "true": "^0.0.4",
     "vue": "latest",
     "vue-router": "latest"
   },
