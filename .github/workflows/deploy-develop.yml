@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - develop
-      - features/**
+      - feature/**
 jobs:
   deploy:
     uses: ./.github/workflows/deploy.yml
