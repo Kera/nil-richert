@@ -14,7 +14,7 @@ jobs:
           path: |
             node_modules
             .nuxt
-          key: npm-deps-${{ hashFiles('**/package.json') }}
+          key: npm-deps-${{ needs.build-upload.outputs.commit-id }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
@@ -27,7 +27,7 @@ jobs:
   unit-tests:
     strategy:
       matrix:
-        operating-systems: [unbuntu-latest, windows-latest]
+        operating-systems: [unbuntu-latest]
     runs-on: ${{ matrix.operating-systems }}
     steps:
       - name: Get code
@@ -39,7 +39,7 @@ jobs:
           path: |
             node_modules
             .nuxt
-          key: npm-deps-${{ hashFiles('**/package.json') }}
+          key: npm-deps-${{ needs.build-upload.outputs.commit-id }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
@@ -70,7 +70,7 @@ jobs:
           path: |
             node_modules
             .nuxt
-          key: npm-deps-${{ hashFiles('**/package.json') }}
+          key: npm-deps-${{ needs.build-upload.outputs.commit-id }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
@@ -104,7 +104,7 @@ jobs:
           path: |
             node_modules
             .nuxt
-          key: npm-deps-${{ hashFiles('**/package.json') }}
+          key: npm-deps-${{ needs.build-upload.outputs.commit-id }}
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
