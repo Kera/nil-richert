@@ -11,7 +11,7 @@ on:
 jobs:
   eslint:
     runs-on: ubuntu-latest
-    uses: ./github/workflows/reuse.yml
+    uses: ./.github/workflows/reuse.yml
     steps:
       - name: Run eslint
         id: run-eslint
