@@ -16,6 +16,8 @@ jobs:
       - name: Install node packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Build app
+        run: npm run build
       - name: Run eslint
         id: run-eslint
         run: ls && npm run lint
