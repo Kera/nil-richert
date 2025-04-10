@@ -2,10 +2,13 @@ name: Deploy
 on:
   workflow_call
 jobs:
+  display-infos:
+    runs-on: ubuntu-20.04
+    uses: ./github/workflows/info.yml
   eslint:
     strategy:
       matrix:
-        node-versions: [16, 18, 20]
+        node-versions: [16, 20]
         operating-systems: [ubuntu-20.04, windows-2019, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.operating-systems }}
     steps:
