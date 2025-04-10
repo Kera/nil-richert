@@ -12,12 +12,5 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@nuxt/image', '@nuxt/eslint'],
-  nitro: {
-    output: {
-        dir: 'output',
-        serverDir: 'output/server',
-        publicDir: 'output/public'
-    }
-}
+  modules: ['@nuxt/image', '@nuxt/eslint']
 })

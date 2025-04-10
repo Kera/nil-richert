@@ -8,9 +8,6 @@
 .cache
 dist
 
-#custom nuxt export
-output
-
 # Node dependencies
 node_modules
 

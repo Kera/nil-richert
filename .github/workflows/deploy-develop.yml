@@ -1,102 +1,49 @@
 name: Deploy dev
-env:
-  CURRENT_ENV: develop
-  AWS_LOGIN: ${{ secrets.AWS_ACCOUNT_EMAIL }}
 on:
   workflow_dispatch:
   push:
     branches:
       - develop
-      - feature/*
 jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Run eslint
-        id: run-eslint
         run: npm run lint
-  unit-tests:
+  unit-test:
     runs-on: ubuntu-latest
+    needs: eslint
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: echo ${{ steps.cache.outputs.cache-hit }} && npm ci
+        run: npm ci
       - name: Run vitest
-        id: vitest
-        run: ls && npm run test
-      - name: Upload unit test report
-        if: ${{ failure() && steps.vitest.conclusion == 'failure' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: vitest-report
-          path: ./vitest-report.json
-  build-upload:
+        run: npm run test
+  build:
     runs-on: ubuntu-latest
-    needs: unit-tests
-    outputs:
-      commit-id: ${{ github.event.head_commit.id }}
+    needs: unit-test
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: npm-deps-${{ hashFiles('**/package.json') }}
       - name: Install node packages
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: echo "${{ toJSON(steps.cache) }}" && npm ci
+        run: npm ci
       - name: Build app
         run: npm run build
-      - name: Print infos
-        run: echo "${{ toJSON(github.event) }}"
+      - name: List files build
+        run: ls
+  upload:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: List files upload
+        run: ls
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
-          name: nil-richert-fr-build-${{ env.CURRENT_ENV }}-${{ github.event.head_commit.id }}
-          path: output
-  echo-commit-id:
-    runs-on: ubuntu-latest
-    needs: build-upload
-    steps:
-      - name: Display infos, list file
-        run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} user - $GITHUB_ACTOR"
-  report:
-    runs-on: ubuntu-latest
-    needs: ['eslint', 'unit-tests', 'build-upload', 'echo-commit-id']
-    if: ${{ always() || success() || cancelled() }}
-    steps:
-      - name: Get code
-        uses: actions/checkout@v4
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: npm-deps-${{ hashFiles('**/package.json') }}
-      - name: Install node packages
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Always executed
-        run: echo "Job ended, listing files" && ls
-  
+          name: nil-richert-fr-build${{ toJSON(github.event.created_at) }}-${{ toJSON(github.event.workflow_sha) }}
+          path: .output
