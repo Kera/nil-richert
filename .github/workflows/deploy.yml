@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         node-versions: [16, 18, 20]
-        operating-systems: [ubuntu-20.04, windows-2019]
+        operating-systems: [ubuntu-20.04, windows-2019, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.operating-systems }}
     steps:
       - name: Get code
@@ -31,10 +31,7 @@ jobs:
         id: run-eslint
         run: ls && npm run lint
   unit-tests:
-    strategy:
-      matrix:
-        operating-systems: [ubuntu-20.04, windows-2019]
-    runs-on: ${{ matrix.operating-systems }}
+    runs-on: ubuntu-20.04
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -62,10 +59,7 @@ jobs:
           name: vitest-report
           path: ./vitest-report.json
   build-upload:
-    strategy:
-        matrix:
-          operating-systems: [ubuntu-20.04, windows-2019]
-    runs-on: ${{ matrix.operating-systems }}
+    runs-on: ubuntu-20.04
     needs: unit-tests
     outputs:
       commit-id: ${{ github.event.head_commit.id }}
