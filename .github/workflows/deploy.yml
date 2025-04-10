@@ -23,10 +23,10 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build app
-        with:
-          node-version: ${{ matrix.node-versions }}
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm run build
+        with:
+          node-version: ${{ matrix.node-versions }}
       - name: Run eslint
         id: run-eslint
         run: ls && npm run lint
