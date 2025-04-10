@@ -27,8 +27,6 @@ jobs:
         run: npm run build
       - name: Run eslint
         id: run-eslint
-        with:
-          node-version: ${{ matrix.node-versions }}
         run: ls && npm run lint
   unit-tests:
     strategy:
