@@ -16,6 +16,6 @@ jobs:
       - name: Message ko 
         if: inputs.message == 'I get knock down'
         run: echo "But i can get up again"
-      # - name: Message ok 
-      #   if: inputs.message != 'I get knock down'
-      #   run: echo "Next lyrics are not '${{ github.events.inputs.message }}'"
+      - name: Message ok 
+        if: inputs.message != 'I get knock down'
+        run: echo "Next lyrics are not '${{ github.events.inputs.message }}'"

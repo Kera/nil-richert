@@ -6,9 +6,9 @@ jobs:
     uses: ./.github/workflows/info.yml
     with:
       message: I get knock down
-    outputs:
-      result:
-        description:  Message response
+    # outputs:
+    #   result:
+    #     description:  Message response
   eslint:
     strategy:
       matrix:
