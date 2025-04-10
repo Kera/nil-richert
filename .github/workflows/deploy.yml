@@ -5,6 +5,7 @@ jobs:
   eslint:
     strategy:
       matrix:
+        node-versions: [16, 18, 20]
         operating-systems: [ubuntu-20.04, windows-2019]
     runs-on: ${{ matrix.operating-systems }}
     steps:
@@ -26,6 +27,8 @@ jobs:
         run: npm run build
       - name: Run eslint
         id: run-eslint
+        with:
+          node-version: ${{ matrix.node-versions }}
         run: ls && npm run lint
   unit-tests:
     strategy:
