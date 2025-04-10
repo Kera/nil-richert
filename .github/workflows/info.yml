@@ -1,8 +1,17 @@
 name: Info
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      message:
+        description: What you want
+        required: false
+        default: Coucou
+        type: string
 jobs:
   info:
     runs-on: ubuntu-latest
     steps:
       - name: Github infos
         run: echo "${{ toJSON(github) }}"
+      - name: Message
+        run: echo "${{ inputs.message }}"

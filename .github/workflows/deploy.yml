@@ -4,6 +4,8 @@ on:
 jobs:
   display-infos:
     uses: ./.github/workflows/info.yml
+    with:
+      message: I get knock down
   eslint:
     strategy:
       matrix:
