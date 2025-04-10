@@ -56,7 +56,7 @@ jobs:
           name: vitest-report
           path: ./vitest-report.json
   build-upload:
-    runs-on: ubuntu-20.04
+    runs-on: ${{ matrix.operating-systems }}
     needs: unit-tests
     outputs:
       commit-id: ${{ github.event.head_commit.id }}
