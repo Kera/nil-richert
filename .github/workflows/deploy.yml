@@ -2,9 +2,6 @@ name: Deploy
 on:
   workflow_call
 jobs:
-  display-infos:
-    runs-on: ubuntu-20.04
-    uses: ./github/workflows/info.yml
   eslint:
     strategy:
       matrix:
