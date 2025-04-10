@@ -3,7 +3,7 @@ on:
   workflow_call
 jobs:
   eslint:
-    runs-on: unbuntu-20.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -27,7 +27,7 @@ jobs:
   unit-tests:
     strategy:
       matrix:
-        operating-systems: [unbuntu-20.04, windows-2019]
+        operating-systems: [ubuntu-20.04, windows-2019]
     runs-on: ${{ matrix.operating-systems }}
     steps:
       - name: Get code
@@ -56,7 +56,7 @@ jobs:
           name: vitest-report
           path: ./vitest-report.json
   build-upload:
-    runs-on: unbuntu-20.04
+    runs-on: ubuntu-20.04
     needs: unit-tests
     outputs:
       commit-id: ${{ github.event.head_commit.id }}
@@ -85,13 +85,13 @@ jobs:
           name: nil-richert-fr-build-${{ env.CURRENT_ENV }}-${{ github.event.head_commit.id }}
           path: output
   echo-commit-id:
-    runs-on: unbuntu-20.04
+    runs-on: ubuntu-20.04
     needs: build-upload
     steps:
       - name: Display infos, list file
         run: echo "branch - $CURRENT_ENV | commitId - ${{ needs.build-upload.outputs.commit-id }} user - $GITHUB_ACTOR"
   report:
-    runs-on: unbuntu-20.04
+    runs-on: ubuntu-20.04
     needs: ['eslint', 'unit-tests', 'build-upload', 'echo-commit-id']
     if: ${{ always() || success() || cancelled() }}
     steps:
