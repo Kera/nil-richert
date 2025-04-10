@@ -1,7 +1,4 @@
 name: Deploy dev
-env:
-  CURRENT_ENV: develop
-  AWS_LOGIN: ${{ secrets.AWS_ACCOUNT_EMAIL }}
 on:
   workflow_dispatch:
   push:
