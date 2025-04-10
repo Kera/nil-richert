@@ -7,15 +7,24 @@ on:
         required: false
         default: Coucou
         type: string
+    outputs:
+      results:
+        description: CKWALASUIT
+        value: ${{ jobs.info.outputs.outcome1 }}
 jobs:
+  outputs: 
+    outcome1: ${{ steps.message-ko.outputs.response }}
+    outcome2: ${{ steps.message-ok.outputs.response }}
   info:
     runs-on: ubuntu-latest
     steps:
       - name: Github infos
         run: echo "${{ toJSON(github) }}"
-      - name: Message ko 
+      - name: Message ok
+        id: message-ok
         if: inputs.message == 'I get knock down'
         run: echo "response=But i can get up again" >> $GITHUB_OUTPUT
-      - name: Message ok 
+      - name: Message ok
+        id: message-ok
         if: inputs.message != 'I get knock down'
         run: echo "response=Next lyrics are not '${{ github.events.inputs.message }}'" >> $GITHUB_OUTPUT

@@ -2,20 +2,17 @@ name: Deploy
 on:
   workflow_call
 jobs:
-  display-infos:
+  set-lyrics:
     uses: ./.github/workflows/info.yml
     with:
       message: I'm bad, i'm bad, really, really bad
-    outputs:
-      result: ${{ jobs.info.outputs.resposne }}
-        
-  # display-infos-correct:
-  #   uses: ./.github/workflows/info.yml
-  #   with:
-  #     message: I get knock down
-    # outputs:
-    #   result:
-    #     description:  Message response
+  are-lyrics-right:
+    needs: set-lyrics
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Print lyrics response
+        run: echo "${{ needs.set-lyrics.outputs.response }}"
+
   eslint:
     strategy:
       matrix:
