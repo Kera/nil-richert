@@ -2,11 +2,11 @@ name: Deploy
 on:
   workflow_call
 jobs:
-  strategy:
-  matrix:
-    operating-systems: [ubuntu-20.04, windows-2019]
   eslint:
-    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        operating-systems: [ubuntu-20.04, windows-2019]
+    runs-on: ${{ matrix.operating-systems }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -28,6 +28,9 @@ jobs:
         id: run-eslint
         run: ls && npm run lint
   unit-tests:
+    strategy:
+      matrix:
+        operating-systems: [ubuntu-20.04, windows-2019]
     runs-on: ${{ matrix.operating-systems }}
     steps:
       - name: Get code
