@@ -6,13 +6,13 @@ jobs:
     uses: ./.github/workflows/info.yml
     with:
       message: I'm bad, i'm bad, really, really bad
-    # outputs:
-    #   result:
-    #     description:  Message response
-  display-infos-correct:
-    uses: ./.github/workflows/info.yml
-    with:
-      message: I get knock down
+    outputs:
+      result: ${{ jobs.info.outputs.resposne }}
+        
+  # display-infos-correct:
+  #   uses: ./.github/workflows/info.yml
+  #   with:
+  #     message: I get knock down
     # outputs:
     #   result:
     #     description:  Message response
