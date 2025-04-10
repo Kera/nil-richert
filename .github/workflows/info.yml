@@ -15,7 +15,7 @@ jobs:
         run: echo "${{ toJSON(github) }}"
       - name: Message ko 
         if: inputs.message == 'I get knock down'
-        run: echo "But i can get up again"
+        run: echo "But i can get up again" >> $GITHUB_OUTPUT
       - name: Message ok 
         if: inputs.message != 'I get knock down'
-        run: echo "Next lyrics are not '${{ github.events.inputs.message }}'"
+        run: echo "Next lyrics are not '${{ github.events.inputs.message }}'" >> $GITHUB_OUTPUT
