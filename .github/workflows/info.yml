@@ -20,12 +20,10 @@ jobs:
     steps:
       - name: Github infos
         run: echo "${{ toJSON(github) }}"
-        with: ${{ inputs.message }}
       - name: Message ok
         id: message-ok
         if: inputs.message == 'I get knock down'
         run: echo "response=But i can get up again" >> $GITHUB_OUTPUT
-        with: ${{ inputs.message }}
       - name: Message ko
         id: message-ko
         if: inputs.message != 'I get knock down'
