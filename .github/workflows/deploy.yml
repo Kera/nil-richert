@@ -4,6 +4,7 @@ on:
 jobs:
   display-infos:
     uses: ./.github/workflows/info.yml
+    with: 'Heyyyy'
   eslint:
     strategy:
       matrix:
