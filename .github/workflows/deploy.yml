@@ -2,11 +2,8 @@ name: Deploy
 on:
   workflow_call
 jobs:
-  set-lyrics:
+  display-infos:
     uses: ./.github/workflows/info.yml
-    steps:
-      - name: print infos
-        run: echo "infos"
   eslint:
     strategy:
       matrix:
