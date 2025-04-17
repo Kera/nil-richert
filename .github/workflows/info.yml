@@ -28,4 +28,4 @@ jobs:
         id: message-ko
         if: inputs.message != 'I get knock down'
         run: echo "response=Next lyrics are not '${{ github.events.inputs.message }}'" >> $GITHUB_OUTPUT
-        with: ${{ inputs.message }}
+        # with: ${{ inputs.message }}
