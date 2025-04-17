@@ -24,7 +24,7 @@ jobs:
         id: message-ok
         if: inputs.message == 'I get knock down'
         run: echo "response=But i can get up again" >> $GITHUB_OUTPUT
-      - name: Message ok
+      - name: Message ko
         id: message-ok
         if: inputs.message != 'I get knock down'
         run: echo "response=Next lyrics are not '${{ github.events.inputs.message }}'" >> $GITHUB_OUTPUT
