@@ -2,8 +2,8 @@ name: Deploy
 on:
   workflow_call
 jobs:
-  # set-lyrics:
-  #   uses: ./.github/workflows/info.yml
+  set-lyrics:
+    uses: ./.github/workflows/info.yml
   #   with:
   #     message: I'm bad, i'm bad, really, really bad
   # are-lyrics-right:
