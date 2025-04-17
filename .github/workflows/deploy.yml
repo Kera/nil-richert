@@ -4,6 +4,9 @@ on:
 jobs:
   set-lyrics:
     uses: ./.github/workflows/info.yml
+    steps:
+      - name: print infos
+        run: echo "infos"
   eslint:
     strategy:
       matrix:
