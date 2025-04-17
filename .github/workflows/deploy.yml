@@ -4,15 +4,6 @@ on:
 jobs:
   set-lyrics:
     uses: ./.github/workflows/info.yml
-  #   with:
-  #     message: I'm bad, i'm bad, really, really bad
-  # are-lyrics-right:
-  #   needs: set-lyrics
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Print lyrics response
-  #       run: echo "${{ needs.set-lyrics.outputs.response }}"
-
   eslint:
     strategy:
       matrix:
