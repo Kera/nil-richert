@@ -12,9 +12,9 @@ on:
         description: CKWALASUIT
         value: ${{ jobs.info.outputs.outcome1 }}
 jobs:
-  outputs: 
-    outcome1: ${{ steps.message-ko.outputs.response }}
-    outcome2: ${{ steps.message-ok.outputs.response }}
+  # outputs: 
+  #   outcome1: ${{ steps.message-ko.outputs.response }}
+  #   outcome2: ${{ steps.message-ok.outputs.response }}
   info:
     runs-on: ubuntu-latest
     steps:
